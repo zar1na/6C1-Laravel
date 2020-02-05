@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@welcome');
+
+Route::get('/pink', 'PagesController@pink');
+
+Route::get('/blue', 'PagesController@blue');
+
