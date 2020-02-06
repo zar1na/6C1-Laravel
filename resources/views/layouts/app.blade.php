@@ -66,14 +66,8 @@
             div.ex2 {
                 max-width:500px;
                 margin: auto;
-                border: 5px solid #FFB6C1;
+                border: 5px solid #778899;
             }
-            
-            div.tb {
-                max-width:1000px;
-                margin: auto;
-                border: 1px solid #FFB6C1;
-                }
         </style>
     </head>
     <body>

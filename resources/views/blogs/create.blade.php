@@ -2,10 +2,9 @@
 @section('title', 'Create')
 
 @section('content')
-<div class="tb" style="background-color:hsla(168, 55%, 94%)">
-<h2 style="color:hsla(168, 55%, 65%)">Create A Blog</h2></div>
+<h2>Create a Blog</h2>
 
-<div class="ex2">
+<div class="ex2" style="background-color:#E8BAC7">
 <form method="POST" action="/blogs">
 {{ csrf_field() }}
 

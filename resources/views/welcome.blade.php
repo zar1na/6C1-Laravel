@@ -2,15 +2,12 @@
 @section('title', 'Welcome')
 
 @section('content')
-<div class="tb" style="background-color:hsla(168, 55%, 94%)">
-<h2 style="color:hsla(168, 55%, 65%)">Welcome</h2></div>
+<h2>Welcome</h2>
 
-<div class="ex2">
-<ul>
+<div class="ex2" style="background-color:#FFB6C1">
 @foreach($data as $data)
-<li>{{ $data }}</li>
+<h4>{{ $data }}</h4>
 @endforeach
-</ul> 
 </div>
 
 @endsection

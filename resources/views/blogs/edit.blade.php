@@ -2,10 +2,9 @@
 @section('title', 'Edit')
 
 @section('content')
-<div class="tb" style="background-color:hsla(168, 55%, 94%)">
-<h2 style="color:hsla(168, 55%, 65%)">Currently Editing: {{ $blog->title }}</h2></div>
+<h2>Currently Editing: {{ $blog->title }}</h2>
 
-<div class="ex2">
+<div class="ex2" style="background-color:#FFE4E1">
 <form method="POST" action="/blogs/{{ $blog->id }}">
 {{ csrf_field() }}
 {{ method_field('PATCH') }}
