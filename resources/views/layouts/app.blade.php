@@ -62,6 +62,18 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            
+            div.ex2 {
+                max-width:500px;
+                margin: auto;
+                border: 5px solid #FFB6C1;
+            }
+            
+            div.tb {
+                max-width:1000px;
+                margin: auto;
+                border: 1px solid #FFB6C1;
+                }
         </style>
     </head>
     <body>
@@ -85,6 +97,8 @@
                     <a href="/">Welcome</a>
                     <a href="/pink">Pink</a>
                     <a href="/blue">Blue</a>
+                    <a href="/blogs">Blogs</a>
+                    <a href="/blogs/create">Create</a>
                 </div>
                 
                 @yield('content')

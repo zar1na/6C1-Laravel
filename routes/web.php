@@ -12,8 +12,17 @@
 */
 
 Route::get('/', 'PagesController@welcome');
-
 Route::get('/pink', 'PagesController@pink');
-
 Route::get('/blue', 'PagesController@blue');
 
+/*
+ * GET /blogs (index)
+ * GET /blogs/create (create)
+ * GET /blogs/1 (show)
+ * POST /blogs (store)
+ * GET /blogs/1/edit (edit)
+ * PATCH /blogs/1 (update)
+ * DELETE /blogs/1 (destroy)
+ */
+
+Route::resource('/blogs', 'BlogsController');
