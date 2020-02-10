@@ -26,3 +26,6 @@ Route::get('/blue', 'PagesController@blue');
  */
 
 Route::resource('/blogs', 'BlogsController');
+
+Route::post('/blogs/{blog}/comments', 'BlogsCommentsController@store');
+Route::patch('/comments/{comment}', 'BlogsCommentsController@update');

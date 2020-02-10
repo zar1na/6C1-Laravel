@@ -2,7 +2,7 @@
 @section('title', 'Edit')
 
 @section('content')
-<h2>Currently Editing: {{ $blog->title }}</h2>
+<h2>Currently Editing...</h2>
 
 <div class="ex2" style="background-color:#FFE4E1">
 <form method="POST" action="/blogs/{{ $blog->id }}">
