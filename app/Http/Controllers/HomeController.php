@@ -11,7 +11,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct() // protects home page from unauth users
     {
         $this->middleware('auth');
     }

@@ -4,7 +4,7 @@
 @section('content')
 <h2>Create a Blog</h2>
 
-<div class="ex2" style="background-color:#E8BAC7">
+<div class="ex2" style="background-color:#F0F8FF">
 <form method="POST" action="/blogs">
 {{ csrf_field() }}
 

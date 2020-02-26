@@ -22,7 +22,7 @@
     <div style="padding: 0px 15px 15px 15px;">
     <button type="submit">Update the Blog</button>
     </div>
-    
+    @include ('errors')
 </form>
 
 <form method="POST" action="/blogs/{{ $blog->id }}">

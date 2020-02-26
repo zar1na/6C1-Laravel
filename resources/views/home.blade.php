@@ -4,7 +4,7 @@
 @section('content')
 <h2>Welcome</h2>
 
-<div class="ex2" style="background-color:#FFB6C1">
+<div class="ex2" style="background-color:#AFEEEE">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

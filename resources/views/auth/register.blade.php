@@ -3,7 +3,7 @@
 
 @section('content')
 <h2>Register</h2>
-<div class="ex2" style="background-color:#FFF0F5">
+<div class="ex2" style="background-color:#F0FFF0">
 <form class="form-horizontal" method="POST" action="/register">
     {{ csrf_field() }}
 
