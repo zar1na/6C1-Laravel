@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>@yield('title')</title>
         
         <!-- Fonts -->
@@ -20,35 +23,28 @@
                 height: 100vh;
                 margin: 0;
             }
-
             .full-height {
                 height: 100vh;
             }
-
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-
             .position-ref {
                 position: relative;
             }
-
             .top-right {
                 position: absolute;
                 right: 10px;
                 top: 18px;
             }
-
             .content {
                 text-align: center;
             }
-
             .title {
                 font-size: 40px;
             }
-
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -58,7 +54,6 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
-
             .m-b-md {
                 margin-bottom: 30px;
             }
@@ -68,13 +63,17 @@
                 margin: auto;
                 border: 5px solid #778899;
             }
+            div.panel-body {
+               padding: 15px 15px 15px 0px;
+            }
         </style>
     </head>
     <body>
+    
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">{{ Auth::user()->name }}</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>

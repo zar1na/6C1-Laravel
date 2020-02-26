@@ -29,3 +29,7 @@ Route::resource('/blogs', 'BlogsController');
 
 Route::post('/blogs/{blog}/comments', 'BlogsCommentsController@store');
 Route::patch('/comments/{comment}', 'BlogsCommentsController@update');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
