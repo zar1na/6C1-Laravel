@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Blog;
+use App\Events\BlogCreated;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
@@ -11,81 +13,69 @@ class BlogsController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        // only allows 'guests' to see these pages
     }
-
+    
     public function index()
     {
         $blogs = Blog::all();
         // using Eloquent which is Laravel's active record implementation
         
-        // auth()->user() :gives user instance for who is signed in
-         // $blogs = Blog::where('owner_id', auth()->id())->get();
-        // adding where conditional to eloquent query
-        
         return view('blogs.index', compact ('blogs'));
     }
-    
+
     public function create()
     {
         return view('blogs.create');
     }
-    
+
     public function store()
-    {
-       $attributes = request()->validate([
-        'title' => ['required', 'min:3'],
-        'description' => ['required', 'min:3']
-        ]); 
-        
-        // send to the creator of the blog
-        $attributes['owner_id'] = auth()->id();
-        
-        $blog = Blog::create($attributes);
-       
-        return redirect('/blogs');
-
-    }
-
-    public function show(Blog $blog)
-    {
-        $this->authorize('update', $blog);
-        // authorize using policy gives the same results
-        
-        // object oriented approch
-        //abort_unless(auth()->user()->owns($blog), 403);
-        
-        //abort_if(\Gate::denies('update', $blog), 403);
-        // if gate denies then it aborts
-        
-        return view('blogs.show', compact('blog'));
-    }
-
-    public function edit(Blog $blog)
-    {
-        return view('blogs.edit', compact('blog'));
-    }
-    
-    public function update(Blog $blog)
     {
         $attributes = request()->validate([
         'title' => ['required', 'min:3'],
         'description' => ['required', 'min:3']
-        ]); 
+        ]); // will automatically redirect if not valid
         
-        $blog->update(request(['title', 'description']));
+        $attributes['owner_id'] = auth()->id();
+        
+        $blog = Blog::create($attributes);
+        
+        //EVENT in BLOG
+        //MAIL in BLOG
+        
+        // validate the blog and save the blog
+        session()->flash('created', 'Your blog has been created!');
+        // stores for single request and if refreshed it will no longer be there
         
         return redirect('/blogs');
+    }
 
+    public function show(Blog $blog)
+    {
+        //$this->authorize('update', $blog);
+        // authorize using policy gives the same results
+       // abort_unless(auth()->owns($blog), 403);
+        //abort_if(\Gate::denies('update', $blog), 403);
+        
+        return view('blogs.show', compact('blog'));
+        
+    }
+
+    public function edit(Blog $blog)
+    {
+     return view('blogs.edit', compact('blog'));
+    }
+
+    public function update(Blog $blog)
+    {
+        $blog->update(request(['title', 'description']));
+        session()->flash('updated', 'The blog was updated!');
+        return view('blogs.show', compact('blog'));
     }
 
     public function destroy(Blog $blog)
     {
         $blog->delete();
+        session()->flash('deleted', 'Your blog was deleted!');
         return redirect('/blogs');
-
     }
-
-
-
 }

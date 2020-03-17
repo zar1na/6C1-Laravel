@@ -63,8 +63,16 @@
                 margin: auto;
                 border: 5px solid #778899;
             }
+            
+            div.cancan {
+                text-align: right;
+                padding-right: 10px;
+            }
             div.panel-body {
                padding: 15px 15px 15px 0px;
+            }
+            div.session {
+               padding: 0px 15px 15px 0px;
             }
         </style>
     </head>
