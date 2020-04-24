@@ -16,6 +16,7 @@ class Blog extends Model
     protected $dispatchesEvents = [
     'created' =>BlogCreated::class
     //event(new BlogCreated($blog));
+    
     ];
     
     public function owner() // for sending "emails"
@@ -29,8 +30,7 @@ class Blog extends Model
         
         static::created(function ($blog) {
             // excecuted after new blog created
-        Mail::to($blog->owner->email)->send(
-        new BlogCreated($blog)
+        Mail::to($blog->owner->email)->send(new BlogCreated($blog)
         );
             
         });

@@ -8,17 +8,11 @@
 <div class="ex2" style="background-color:#E0FFFF">
 <h4>{{ $blog->description }}</h4>
 
-<div class="cancan">
-<h5>Created by: {{ $blog->owner->name }}</h5>
-<h5>Created @ {{ $blog->created_at }}</h5>
+<div class="session">
+@if (session('updated'))
+<h5 style="color:orange">{{ session('updated') }}</h5>
+@endif
 </div>
-@can('update', $blog)
-<div class="cancan">
-<h5>
-<a style="padding-left: 300px;" href="/blogs/{{ $blog->id }}/edit">Edit?</a>
-</h5>
-</div>
-@endcan
 
 @if ($blog->comments->count())
 <div style="padding: 0px 15px 15px 0 px;">
@@ -27,8 +21,8 @@
 {{ method_field('PATCH') }}
 {{ csrf_field() }}
 
-<label class="checkbox" for="completed">
-<input type="checkbox" name="completed" onChange="this.form.submit()" {{ $comment->completed ? 'checked' : '' }}>
+<label class="checkbox" {{ $comment->liked ? 'is-liked' : '' }} for="liked">
+<input type="checkbox" name="liked" onChange="this.form.submit()" {{ $comment->liked ? 'checked' : '' }}>
 {{ $comment->description }}
 </label>
 </form>
@@ -54,11 +48,18 @@
 @include ('errors')
 </form>
 
-<div class="session">
-@if (session('updated'))
-<h5 style="color:orange">{{ session('updated') }}</h5>
-@endif
+<div class="cancan">
+<h5>Created by: {{ $blog->owner->name }}</h5>
+<h5>Created @ {{ $blog->created_at }}</h5>
 </div>
+@can('update', $blog)
+<div class="cancan">
+<h5>
+<a style="padding-left: 300px;" href="/blogs/{{ $blog->id }}/edit">Edit?</a>
+</h5>
+</div>
+@endcan
+
 
 </div>
 @endsection

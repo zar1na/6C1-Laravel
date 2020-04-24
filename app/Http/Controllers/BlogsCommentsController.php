@@ -23,13 +23,13 @@ class BlogsCommentsController extends Controller
     
     public function update(Comment $comment)
     {
-       /* $comment->update([
-        'completed' => request()->has('completed')
-        ]); */
+       $comment->update([
+        'liked' => request()->has('liked')
+        ]);
         
-        $method = request()->has('completed') ? 'complete' : 'incomplete';
+        /*$method = request()->has('completed') ? 'complete' : 'incomplete';
         $comment->$method();
-
+        */
         
         return back();
     }

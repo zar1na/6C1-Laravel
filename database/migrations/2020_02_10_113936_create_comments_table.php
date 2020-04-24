@@ -17,18 +17,13 @@ class CreateCommentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('blog_id');
             $table->string('description');
-            $table->boolean('completed')->default(false);
-            
+            $table->boolean('liked')->default(false);
             $table->timestamps();
+           
         });
         
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('comments');
