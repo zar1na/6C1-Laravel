@@ -15,6 +15,13 @@ Route::get('/', 'PagesController@welcome');
 Route::get('/pink', 'PagesController@pink');
 Route::get('/blue', 'PagesController@blue');
 
+use App\Notifications\NewBlogCreated;
+Route::get('/pink', function() {
+    $user = App\User::first();
+    $user->notify(new NewBlogCreated);
+    return 'notification';
+}); // couldn't get a real world example working. Goes to log and database
+
 /*
  * GET /blogs (index)
  * GET /blogs/create (create)
