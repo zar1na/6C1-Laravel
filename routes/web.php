@@ -10,17 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Notifications\NewBlogCreated;
 
 Route::get('/', 'PagesController@welcome');
 Route::get('/pink', 'PagesController@pink');
 Route::get('/blue', 'PagesController@blue');
 
-use App\Notifications\NewBlogCreated;
-Route::get('/pink', function() {
+Route::get('/notify', function() {
     $user = App\User::first();
     $user->notify(new NewBlogCreated);
-    return 'notification';
-}); // couldn't get a real world example working. Goes to log and database
+    return view('notify');
+});
+// couldn't get a real world example working but it does go to log to the database
 
 /*
  * GET /blogs (index)

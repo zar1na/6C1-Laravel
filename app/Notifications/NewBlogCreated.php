@@ -30,6 +30,7 @@ class NewBlogCreated extends Notification
     public function via($notifiable)
     {
         return ['mail', 'database'];
+        // store in the log and database
     }
 
     /**
@@ -41,9 +42,8 @@ class NewBlogCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('A New Blog Has Been Created:)')
-                    ->line('** NOTIFICATION **')
-                    ->action('Notification Action', url('/'));
+                    ->subject('** NOTIFICATION **')
+                    ->line('** NOTIFICATION **');
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Events;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 
-class BlogCreated
+class BlogCreated // $event->project
 { 
     
     public $blog;

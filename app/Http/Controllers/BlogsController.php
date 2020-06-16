@@ -39,21 +39,29 @@ class BlogsController extends Controller
         
         $blog = Blog::create($attributes);
         
-        //EVENT in BLOG
-        //MAIL in BLOG
+        //firing off a custom event
+        event(new BlogCreated($blog));
+        
+        // fires off a notification when a blog is created
+       // $user->notify(new NewBlogCreated);
+      // Notification::send(new BlogCreated($blog));
         
         // validate the blog and save the blog
-        session()->flash('created', 'Your blog has been created!');
+        //session()->flash('created', 'Your blog has been created!');
         // stores for single request and if refreshed it will no longer be there
         
-        return redirect('/blogs');
+        //session(['created' => 'The blog was created' ]);
+        // stores for the lifetime of the session
+        
+        return redirect('/blogs'); // ->with(['created' => 'The blog was created' ]);;
+        // with flashes the message
     }
 
     public function show(Blog $blog)
     {
         //$this->authorize('update', $blog);
         // authorize using policy gives the same results
-       // abort_unless(auth()->owns($blog), 403);
+        // abort_unless(auth()->owns($blog), 403);
         //abort_if(\Gate::denies('update', $blog), 403);
         
         return view('blogs.show', compact('blog'));

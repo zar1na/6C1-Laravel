@@ -82,6 +82,7 @@
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">{{ Auth::user()->name }}</a>
+                        <a href="/notify">Notify</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
