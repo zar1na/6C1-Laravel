@@ -23,6 +23,14 @@ Route::get('/notify', function() {
 });
 // couldn't get a real world example working but it does go to log to the database
 
+// assumes you're signed in and then proceeds with the request
+Route::middleware('auth')->post('/colabs', function() {
+    auth()->user()->colab()->create(
+        request()->validate(['name' => 'required'])
+    );
+    // user_id is now set automatically
+    return redirect('/');
+});
 /*
  * GET /blogs (index)
  * GET /blogs/create (create)
