@@ -33,8 +33,8 @@ class Blog extends Model
     public function addComment($description)
     {
         $this->comments()->create(compact('description'));
-        // alrady knows associated project it wil apply blog id based on current instance
-        /* return Comment::create([
+        // already knows the associated project it wil apply blog id based on current instance
+       /* return Comment::create([
         'blog_id' => $this->id,
         'description' => $description
         ]);

@@ -3,7 +3,7 @@
 
 @section('content')
 <h2>Login</h2>
-<div class="ex2" style="background-color:#E6E6FA">
+<div class="ex2" style="background-color:#ccffcc">
 <div class="container">
 
 <div class="panel-body">

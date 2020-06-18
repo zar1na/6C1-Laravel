@@ -52,7 +52,7 @@
 <h5>Created by: {{ $blog->owner->name }}</h5>
 <h5>Created @ {{ $blog->created_at }}</h5>
 </div>
-@can('update', $blog)
+@can('edit', $blog)
 <div class="cancan">
 <h5>
 <a style="padding-left: 300px;" href="/blogs/{{ $blog->id }}/edit">Edit?</a>

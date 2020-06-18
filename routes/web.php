@@ -22,8 +22,7 @@ Route::post('/auth/LEO', 'AuthController@postLogin');
 Route::get('/auth/token/{token}', 'AuthController@authenticate');
 
 Route::get('/notify', function() {
-    $user = App\User::first();
-    $user->notify(new NewBlogCreated);
+    auth()->user()->notify(new NewBlogCreated);
     return view('notify');
 });
 // couldn't get a real world example working but it does go to log to the database
@@ -45,6 +44,9 @@ Route::middleware('auth')->post('/colabs', function() {
  * PATCH /blogs/1 (update)
  * DELETE /blogs/1 (destroy)
  */
+
+// Track ColabDocument
+Route::get('/documents/{document}', 'DocumentsController@store');
 
 Route::resource('/blogs', 'BlogsController');
 

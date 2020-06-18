@@ -13,4 +13,9 @@ class Comment extends Model
         return $this->belongsTo(Blog::class);
     }
     
+   /* public function like($liked = true) { // $comment->complete(false)
+        $this->update(compact('liked'));
+        
+    }
+    */
 }

@@ -6,8 +6,7 @@ use App\Comment;
 use App\Blog;
 
 class BlogsCommentsController extends Controller
-{
-    
+{   
     public function store(Blog $blog)
     {
        $attributes = request()->validate(['description' => 'required']);
@@ -20,17 +19,18 @@ class BlogsCommentsController extends Controller
         return back();
     }
     
-    
     public function update(Comment $comment)
     {
        $comment->update([
         'liked' => request()->has('liked')
         ]);
         
+       // $comment->like(request()->has('liked');
+       // encapsulate myself in the Comment model
+        
         /*$method = request()->has('completed') ? 'complete' : 'incomplete';
         $comment->$method();
         */
-        
         return back();
     }
 }

@@ -17,9 +17,9 @@ class BlogPolicy
      * @param  \App\Blog  $blog
      * @return mixed
      */
-    public function update(User $user, Blog $blog)
+    public function edit(User $user, Blog $blog)
     {
-        return $blog->owner_id == $user->id;
+        return $blog->owner_id == $user->id; // ploicy for whether a user can edit another users blog
     }
      
 }
