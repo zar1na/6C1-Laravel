@@ -30,4 +30,7 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Colab');
     }
+    public static function byEmail($email) {
+        return static::where('email', $email)->firstOrFail();
+    }
 }

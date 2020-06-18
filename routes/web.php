@@ -16,6 +16,11 @@ Route::get('/', 'PagesController@welcome');
 Route::get('/pink', 'PagesController@pink');
 Route::get('/blue', 'PagesController@blue');
 
+// advanced auth
+Route::get('/auth/LEO', 'AuthController@login');
+Route::post('/auth/LEO', 'AuthController@postLogin');
+Route::get('/auth/token/{token}', 'AuthController@authenticate');
+
 Route::get('/notify', function() {
     $user = App\User::first();
     $user->notify(new NewBlogCreated);

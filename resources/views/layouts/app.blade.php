@@ -85,6 +85,7 @@
                         <a href="/notify">Notify</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
+                        <a href="/auth/LEO">Email Only Login</a>
                         <a href="{{ route('register') }}">Register</a>
                     @endauth
                 </div>
