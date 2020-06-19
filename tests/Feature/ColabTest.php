@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ColabTest extends TestCase
 {
-    use RefreshDatabase; 
+    //use RefreshDatabase; 
     // after every test if the database state is changed then it will reset/refresh and get rid of anything done here
     // automatically runs migrations
     
