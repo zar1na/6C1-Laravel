@@ -83,6 +83,7 @@
                     @auth
                         <a href="{{ url('/home') }}">{{ Auth::user()->name }}</a>
                         <a href="/notify">Notify</a>
+                        <a href="/documents/1">Documents</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="/auth/LEO">Email Only Login</a>

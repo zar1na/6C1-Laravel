@@ -45,8 +45,11 @@ Route::middleware('auth')->post('/colabs', function() {
  * DELETE /blogs/1 (destroy)
  */
 
-// Track ColabDocument
-Route::get('/documents/{document}', 'DocumentsController@store');
+// Tracking Document
+//Auth::loginUsingId(1);
+Route::group(['middleware' => ['web']], function () {
+Route::get('/documents/{document}', 'DocumentsController@show');
+});
 
 Route::resource('/blogs', 'BlogsController');
 
